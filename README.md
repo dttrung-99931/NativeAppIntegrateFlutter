@@ -8,8 +8,8 @@
     ```    
     module:  
       androidX: true  
-      androidPackage: pantech.flutterembeded.flutter_app  
-      iosBundleIdentifier: pantech.flutter-embeded.flutterApp  
+      androidPackage: com.your_android_package_name 
+      iosBundleIdentifier: com.your_ios_bundle_id  
     ```
   - Otherwise: create a flutter module by:  
     ```
