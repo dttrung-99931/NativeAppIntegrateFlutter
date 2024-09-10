@@ -17,6 +17,54 @@
     ```    
      
 - Integrate the flutter module into native Android app: [Complete guide](https://docs.flutter.dev/add-to-app/android/project-setup)
+  - Configure gradle files in the native android project  
+    Remove these below lines from build.gradle (project level)  
+    ```
+    ...
+    repositories {
+        google()
+        mavenCentral()
+    }
+    ```  
+
+    Update settings.gradle like below:  
+    ```
+    // Update or add dependencyResolutionManagement bloc like below
+    dependencyResolutionManagement {
+      repositoriesMode = RepositoriesMode.PREFER_SETTINGS
+      repositories {
+           google()
+           mavenCentral()
+      }
+      maven {
+            url = uri("../flutter_app_module/build/host/outputs/repo") // ../flutter_app_module is the related path of the flutter module
+      }
+      maven {
+            url = uri("https://storage.googleapis.com/download.flutter.io")
+      }
+    }
+    ```  
+  -  Config flutter activity:
+      Run `flutter pub get` in the flutter module to genrate .android folder that will be loaded in a module in the native andorid project.  
+
+      Open the native andorid project
+
+      Declare the flutter activity in manifest file by adding the below block into `<application>` tag
+      ```
+      <activity
+        android:name="io.flutter.embedding.android.FlutterActivity"
+        android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+        android:hardwareAccelerated="true"
+        android:windowSoftInputMode="adjustResize"
+      />
+      ```
+
+      Navigate to Flutter activity  
+     <img width="988" alt="image" src="https://github.com/user-attachments/assets/46fe97e8-5327-439b-95a9-6855f71d5496">
+
+    Done. FlutterActivity is the embeded flutter app in native app
+
+     
 - Integrate the flutter module into native iOS app: [Complete guide](https://docs.flutter.dev/add-to-app/ios/project-setup)
   - [Config Podfile](https://docs.flutter.dev/add-to-app/ios/project-setup#set-local-network-privacy-permissions): Add these config to Podfile  
     ```
@@ -53,6 +101,8 @@
 
   - Navigate to the Flutter screen from native ios screen
 
-    <img width="990" alt="image" src="https://github.com/user-attachments/assets/6ba4d2e4-011c-40a9-bf06-35f274f5e1ca">
+    <img width="990" alt="image" src="https://github.com/user-attachments/assets/6ba4d2e4-011c-40a9-bf06-35f274f5e1ca">  
+
+  Done FlutterContentView is the embeded Flutter app into native ios app 
 
 
