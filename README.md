@@ -71,8 +71,8 @@
 
     Done. FlutterActivity is the embeded flutter app in native app
 
-- Integrate the flutter module into native iOS app: [Complete guide](https://docs.flutter.dev/add-to-app/ios/project-setup)
-  The config is different based on your native iOS use CocoaPods or Swift package manager
+- Integrate the flutter module into native iOS app: [Complete guide](https://docs.flutter.dev/add-to-app/ios/project-setup)  
+  The config is different based on your native iOS using CocoaPods or Swift package manager
   - Config guide for ios project using Swift Package Manager
     - Run `flutter build swift-package --platform ios` to build your flutter module into a swift package
       (Add --no-codesign option to ignore code signing when you don't need to setup apple dev acc)
